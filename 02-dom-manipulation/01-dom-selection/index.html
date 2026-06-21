@@ -3,44 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DOM Selection</title>
-    <style>
-      * {
-        border: 2px solid #8d8d8d;
-        padding: 10px;
-        margin: 10px;
-      }
-
-      html {
-        margin: 0;
-        padding: 0;
-      }
-
-      body {
-        max-width: 600px;
-        margin: 30px auto;
-        color: #333;
-      }
-    </style>
+    <title>Selection DOM</title>
   </head>
   <body>
-    <h1>Hello World</h1>
-    <div>
-      <section>
-        <p>Paragraf 1</p>
-        <a href="#">Instagram</a>
-        <p>Paragraf 2</p>
-        <p>Paragraf 3</p>
-      </section>
-      <section>
-        <p>Paragraf 4</p>
-        <ul>
-          <li>item 1</li>
-          <li>item 2</li>
-          <li>item 3</li>
-          <li>item 4</li>
-        </ul>
-      </section>
-    </div>
+    <h1 id="nama-kelas">Kelas D3 Manajemen Informatika</h1>
+    <p id="deskripsi">
+      Daftar Mahasiswa yang telah menyelesaikan evaluasi database
+    </p>
+
+    <h3>Daftar Mahasiswa</h3>
+    <ul>
+      <li class="mahasiswa lulus">Rian Hidayat - Lulus</li>
+      <li class="mahasiswa belum-lulus">Sari Utami - Belum Lulus</li>
+      <li class="mahasiswa lulus">Gita Lestari - Lulus</li>
+      <li class="mahasiswa belum-lulus">Budi Santoso - Belum Lulus</li>
+    </ul>
+
+    <button id="id-higlight">Sorot Mahasiswa Lulus</button>
+    <button class="btn-reset">Reset Tampilan</button>
+
+    <script src="script.js"></script>
   </body>
 </html>
