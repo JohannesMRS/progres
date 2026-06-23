@@ -1,10 +1,10 @@
 const judul = document.getElementById("nama-kelas");
 const btn = document.getElementsByTagName("button");
 const btnConvert = [...btn];
-
 const btnShow = document.getElementById("tampilkan");
 const listData = document.getElementById("listData");
 const showLulus = document.getElementById("showLulus");
+const btnGanti = document.getElementById("ganti");
 
 const databaseMahasiswa = [
   {
@@ -46,6 +46,9 @@ const databaseMahasiswa = [
 
 judul.textContent = "Dashboard Evaluasi Polmed";
 
+btnGanti.addEventListener("click", ()=>{
+  judul.textContent = "Dashboard Diganti"
+})
 // btnShow.addEventListener("click", () => {
 //   databaseMahasiswa.forEach((item) => {
 //     document.write("Nama: ", item.nama, "<br>");
