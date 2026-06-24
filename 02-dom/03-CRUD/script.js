@@ -1,35 +1,51 @@
-const tableMain = document.getElementById('table-main');
-const tableBody= document.getElementById('table-body');
-const btnTambah = document.getElementById('tambah');
-const btnEdit = document.getElementById('edit');
-const btnHapus = document.getElementById('hapus');
+const inputForm = document.getElementById('input-form');
+const input = document.getElementById('input-teks');
+const btnTambah = document.getElementById('button-tambah');
+const listTugas = document.getElementById('list-tugas');
 
-const dataMahasiswa = [
-    {nim: 2405, nama: "Johannes", kelas: "MI-4B"},
-    {nim: 2406, nama: "John", kelas: "MI-4A"},
-    {nim: 2404, nama: "Alex", kelas: "MI-4C"}
-];
-
-tableBody.innerHTML = "";
-
-dataMahasiswa.forEach((item)=>{
-    tableBody.innerHTML += `<tr>
-    <td>${item.nim}</td>
-    <td>${item.nama}</td>
-    <td>${item.nim}</td>
-    <td>
-    <button id = "hapus">Hapus</button>
-    <button id = "edit">Edit</button>
-
-    </td>
-    </tr>`;
-})
 
 
 btnTambah.addEventListener("click", ()=>{
+    const value = input.value.trim();
+
+    if(value === ""){
+        alert("data kosong")
+        return
+    }
+
+    const liBaru = document.createElement('li');
+
+    const komponenTeks = document.createElement('span');
+    komponenTeks.classList.add('teks-tugas');
+    komponenTeks.textContent = value;
+
+    const pembungkusTombol = document.createElement('div');
+
+    const tombolEdit = document.createElement('button');
+    tombolEdit.classList.add('btn-edit');
+    tombolEdit.textContent = "Edit";
+
+    const tombolHapus = document.createElement('button');
+    tombolHapus.classList.add('btn-hapus');
+    tombolHapus.setAttribute('onclick', 'confirm("Apakah Yakin?")')
+    tombolHapus.textContent = "Hapus";
+
+    tombolEdit.addEventListener("click", ()=>{
+        komponenTeks.classList.toggle('selesai')
+    })
+
+    tombolHapus.addEventListener('click', ()=>{
+        liBaru.remove();
+    })
+
+    pembungkusTombol.appendChild(tombolEdit);
+    pembungkusTombol.appendChild(tombolHapus)
+
+    liBaru.appendChild(komponenTeks);
+    liBaru.appendChild(pembungkusTombol);
+
+    listTugas.appendChild(liBaru);
+
+    input.value = "";
 
 })
-
-
-
-
