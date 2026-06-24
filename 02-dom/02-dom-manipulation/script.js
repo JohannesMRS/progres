@@ -20,49 +20,65 @@
 // })
 
 
-// Case 2
-const containerPesanan = document.getElementById("pesanan-container");
-let kartuHTMl = "";
-const btnTheme = document.getElementById("btn-theme")
-const body = document.body
+// // Case 2
+// const containerPesanan = document.getElementById("pesanan-container");
+// let kartuHTMl = "";
+// const btnTheme = document.getElementById("btn-theme")
+// const body = document.body
 
 
-const laporanTransaksiOxa = [
-  { idTransaksi: "TX-001", kasir: "Rian", tipePesanan: "Dine In", totalBayar: 65000 },
-  { idTransaksi: "TX-002", kasir: "Gita", tipePesanan: "Take Away", totalBayar: 28000 },
-  { idTransaksi: "TX-003", kasir: "Rian", tipePesanan: "Take Away", totalBayar: 106000 },
-  { idTransaksi: "TX-004", kasir: "Budi", tipePesanan: "Dine In", totalBayar: 56000 }
-];
+// const laporanTransaksiOxa = [
+//   { idTransaksi: "TX-001", kasir: "Rian", tipePesanan: "Dine In", totalBayar: 65000 },
+//   { idTransaksi: "TX-002", kasir: "Gita", tipePesanan: "Take Away", totalBayar: 28000 },
+//   { idTransaksi: "TX-003", kasir: "Rian", tipePesanan: "Take Away", totalBayar: 106000 },
+//   { idTransaksi: "TX-004", kasir: "Budi", tipePesanan: "Dine In", totalBayar: 56000 }
+// ];
 
-laporanTransaksiOxa.forEach((l)=>{
-    let kelasWarna = l.tipePesanan === "Dine In" ?  "dine-in" : "take-away"; 
-    kartuHTMl += `
-    <div class = "card-pesanan">
-        <span class = "id-tx">${l.idTransaksi}</span>
-        <h3 class = "nama-kasir">Kasir: ${l.kasir}</h3>
-        <span class = "tipe-badge ${kelasWarna}">Tipe: ${l.tipePesanan}</span>
-        <p class = "total-harga">Total: Rp ${l.totalBayar}</p>
-    </div>
-    `
-})
+// laporanTransaksiOxa.forEach((l)=>{
+//     let kelasWarna = l.tipePesanan === "Dine In" ?  "dine-in" : "take-away"; 
+//     kartuHTMl += `
+//     <div class = "card-pesanan">
+//         <span class = "id-tx">${l.idTransaksi}</span>
+//         <h3 class = "nama-kasir">Kasir: ${l.kasir}</h3>
+//         <span class = "tipe-badge ${kelasWarna}">Tipe: ${l.tipePesanan}</span>
+//         <p class = "total-harga">Total: Rp ${l.totalBayar}</p>
+//     </div>
+//     `
+// })
 
 
-containerPesanan.innerHTML = kartuHTMl
+// containerPesanan.innerHTML = kartuHTMl
 
-btnTheme.addEventListener("click", ()=>{
-    body.classList.toggle("dark-mode")
-    const isDark = body.classList.contains('dark-mode')
+// btnTheme.addEventListener("click", ()=>{
+//     body.classList.toggle("dark-mode")
+//     const isDark = body.classList.contains('dark-mode')
 
-    if(isDark){
-        btnTheme.textContent = "Switch To Light Mode"
-        btnTheme.style.backgroundColor = "#e2e8f0"
-        btnTheme.style.color = "#0f172a"
-    }else{
-        btnTheme.textContent = "Switch To Dark Mode"
-        btnTheme.style.backgroundColor = "#0f172a"
-        btnTheme.style.color = "#e2e8f0"
-    }
+//     if(isDark){
+//         btnTheme.textContent = "Switch To Light Mode"
+//         btnTheme.style.backgroundColor = "#e2e8f0"
+//         btnTheme.style.color = "#0f172a"
+//     }else{
+//         btnTheme.textContent = "Switch To Dark Mode"
+//         btnTheme.style.backgroundColor = "#0f172a"
+//         btnTheme.style.color = "#e2e8f0"
+//     }
     
+// })
+
+
+const listBahasa = document.getElementById("list-bahasa")
+
+const liBaru = document.createElement("li");
+
+liBaru.textContent = "Javascript"
+
+listBahasa.appendChild(liBaru);
+
+
+const btnTambah = document.getElementById("tambahGolang")
+
+btnTambah.addEventListener("click", ()=>{
+    const liBaru = document.createElement("li")
+    liBaru.textContent = "Golang"
+    listBahasa.appendChild(liBaru)
 })
-
-
