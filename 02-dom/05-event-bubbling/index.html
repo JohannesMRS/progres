@@ -1,0 +1,87 @@
+<!-- <!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belajar Event Delegation</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; background-color: #f8fafc; }
+        #wadah-menu { background: white; padding: 20px; border-radius: 8px; max-width: 400px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .item-kopi { display: flex; justify-content: space-between; padding: 10px; border-bottom: 1px solid #e2e8f0; }
+        button { background-color: #38bdf8; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <h2>☕ Pilih Menu OXA COFFEE</h2>
+    
+    <div id="wadah-menu">
+        <div class="item-kopi">
+            <span>Espresso</span>
+            <button class="btn-pilih" data-nama="Espresso">Pilih</button>
+        </div>
+        <div class="item-kopi">
+            <span>Americano</span>
+            <button class="btn-pilih" data-nama="Americano">Pilih</button>
+        </div>
+        <div class="item-kopi">
+            <span>Cafe Latte</span>
+            <button class="btn-pilih" data-nama="Cafe Latte">Pilih</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OXA COFFEE - Meja Management</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; padding: 30px; background-color: #0f172a; color: white; }
+        h2 { color: #38bdf8; }
+        
+        /* Wadah Induk */
+        #container-meja { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; margin-top: 20px; }
+        
+        /* Elemen Anak (Kartu Meja) */
+        .kartu-meja { background: #1e293b; border: 2px solid #334155; border-radius: 10px; padding: 20px; cursor: pointer; display: flex; flex-direction: column; gap: 15px; transition: 0.2s; }
+        .kartu-meja:hover { border-color: #38bdf8; }
+        
+        .nomor-meja { font-size: 1.3rem; font-weight: bold; }
+        
+        /* Tombol di dalam Kartu Meja */
+        .btn-kosongkan { background-color: #ef4444; color: white; border: none; padding: 8px; border-radius: 6px; cursor: pointer; font-weight: bold; }
+        .btn-kosongkan:hover { background-color: #dc2626; }
+    </style>
+</head>
+<body>
+
+    <h2>🪑 Layout Meja Live - OXA COFFEE</h2>
+    <p>Klik kartu untuk lihat detail, klik tombol merah untuk mengosongkan.</p>
+
+    <div id="container-meja">
+        
+        <div class="kartu-meja" data-meja="01">
+            <span class="nomor-meja">Meja 01</span>
+            <button class="btn-kosongkan" data-meja="01">Kosongkan Meja</button>
+        </div>
+
+        <div class="kartu-meja" data-meja="02">
+            <span class="nomor-meja">Meja 02</span>
+            <button class="btn-kosongkan" data-meja="02">Kosongkan Meja</button>
+        </div>
+
+        <div class="kartu-meja" data-meja="03">
+            <span class="nomor-meja">Meja 03</span>
+            <button class="btn-kosongkan" data-meja="03">Kosongkan Meja</button>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
