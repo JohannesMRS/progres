@@ -22,15 +22,36 @@
 // })
 
 
-const pembungkusTombol = document.getElementById('pembungkus-tombol');
+// const pembungkusTombol = document.getElementById('pembungkus-tombol');
 
-pembungkusTombol.addEventListener('click', (e)=>{
-    if(e.target.classList.contains('btn-kategori')){
-        const dataKategori = e.target.getAttribute('data-kategori');
-        alert(`Menampilkan menu kategori ${dataKategori}`);
-    }else if(e.target.classList.contains('btn-diskon')){
-        const dataPromo = e.target.getAttribute('data-id-promo');
-        e.stopPropagation();
-        alert(`Kode Promo ${dataPromo} Aktif`);
+// pembungkusTombol.addEventListener('click', (e)=>{
+//     if(e.target.classList.contains('btn-kategori')){
+//         const dataKategori = e.target.getAttribute('data-kategori');
+//         alert(`Menampilkan menu kategori ${dataKategori}`);
+//     }else if(e.target.classList.contains('btn-diskon')){
+//         const dataPromo = e.target.getAttribute('data-id-promo');
+//         e.stopPropagation();
+//         alert(`Kode Promo ${dataPromo} Aktif`);
+//     }
+// })
+
+
+const menuKopi = document.getElementById('menu-kopi');
+
+menuKopi.addEventListener('click', (e)=>{
+    if(e.target.classList.contains('btn-aksi')){
+        const pembungkusTombol = e.target.parentElement;
+        const elemenAngka = pembungkusTombol.querySelector('.angka-jumlah');
+        const btnAksi = e.target.getAttribute('data-aksi')
+        let angka = parseInt(elemenAngka.textContent);
+        if(btnAksi == "tambah"){
+            angka++;
+            elemenAngka.textContent = angka;
+        }else{
+            angka--;  
+            if(angka >=0){
+                elemenAngka.textContent = angka;
+            }
+        }
     }
 })
