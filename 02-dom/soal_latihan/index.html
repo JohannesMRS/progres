@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeetCode Challenge - Split Bill</title>
+    <style>
+        body { display: flex; justify-content: center; align-items: center; height: 100vh; font-family: sans-serif; background-color: #0f172a; color: white; }
+        .card { max-width: 400px; background: #1e293b; padding: 25px; border-radius: 12px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3); }
+        h3 { margin-top: 0; color: #38bdf8; }
+        .input-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-size: 0.9rem; color: #94a3b8; }
+        input { width: 100%; padding: 10px; background: #0f172a; border: 1px solid #334155; border-radius: 6px; color: white; box-sizing: border-box; font-size: 1.1rem; }
+        
+        /* Wadah Tombol Jumlah Orang */
+        #selector-orang { display: flex; gap: 10px; margin-bottom: 25px; }
+        .btn-orang { flex: 1; background: #334155; color: white; border: none; padding: 10px; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 1rem; }
+        .btn-orang:hover { background: #475569; }
+        .btn-without-hover:hover{
+            background: #334155;
+            cursor: not-allowed;
+        }
+        /* Hasil Akhir */
+        .result-box { background: #0f172a; padding: 15px; border-radius: 8px; text-align: center; border: 1px dashed #38bdf8; }
+        .result-box h4 { margin: 0 0 5px 0; color: #94a3b8; font-size: 0.9rem; }
+        #total-per-orang { font-size: 1.8rem; font-weight: bold; color: #38bdf8; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h3>💸 OXA Split-Bill Calculator</h3>
+        
+        <div class="input-group">
+            <label for="input-total">Total Tagihan (Rp)</label>
+            <input type="number" id="input-total" placeholder="Contoh: 150000" autocomplete="off">
+        </div>
+
+        <label>Dibagi Berapa Orang?</label>
+        <div id="selector-orang">
+            <button class="btn-orang" data-jumlah="2">2 Orang</button>
+            <button class="btn-orang" data-jumlah="3">3 Orang</button>
+            <button class="btn-orang" data-jumlah="4">4 Orang</button>
+            <button class="btn-orang" data-jumlah="5">5 Orang</button>
+        </div>
+
+        <div class="result-box">
+            <h4>Patungan Per Orang:</h4>
+            <span id="total-per-orang">Rp 0</span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
