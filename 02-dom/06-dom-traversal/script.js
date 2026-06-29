@@ -97,6 +97,5 @@ papanAntrean.addEventListener('click', (e)=>{
 })
 
 inputNama.addEventListener('input', ()=>{
-
-    actionGroupBtn.classList.toggle('btn-disabled')
+    actionGroupBtn.classList.toggle('btn-disabled', inputNama.value === '')
 })
