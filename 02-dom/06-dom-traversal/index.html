@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OXA COFFEE - Admin Dashboard</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; padding: 30px; background-color: #0f172a; color: white; min-height: 150vh; }
+        body { font-family: 'Segoe UI', sans-serif; padding: 30px; background-color: #0f172a; color: white; min-height: 200vh; }
         h2, h3 { color: #38bdf8; }
         .container { max-width: 600px; margin: 0 auto; }
         
@@ -53,6 +53,64 @@
     </div>
 
     <div id="floating-btn">↑</div>
+
+    <script src="script.js"></script>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OXA COFFEE - VIP Queue System</title>
+    <style>
+        body { font-family: sans-serif; padding: 30px; background-color: #0f172a; color: white; }
+        .card { max-width: 450px; margin: 0 auto; background: #1e293b; padding: 25px; border-radius: 12px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3); }
+        h3 { margin-top: 0; color: #38bdf8; text-align: center; }
+        .input-group { margin-bottom: 15px; }
+        input { width: 100%; padding: 10px; background: #0f172a; border: 1px solid #334155; border-radius: 6px; color: white; box-sizing: border-box; font-size: 1rem; }
+        
+        /* Grup Tombol Tambah Antrean */
+        #action-group { display: flex; gap: 10px; margin-bottom: 25px; }
+        .btn-add { flex: 1; padding: 12px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 0.9rem; color: #0f172a; }
+        .btn-reguler { background-color: #a7f3d0; } /* Hijau Muda */
+        .btn-vip { background-color: #fef08a; } /* Kuning VIP */
+        
+        /* Style saat tombol disabled */
+        .btn-disabled { cursor: not-allowed !important; opacity: 0.4; background-color: #475569 !important; color: #94a3b8 !important; }
+
+        /* Daftar Antrean */
+        .antrean-item { display: flex; justify-content: space-between; align-items: center; padding: 12px; background: #0f172a; border-radius: 8px; margin-bottom: 10px; border-left: 4px solid #a7f3d0; }
+        .is-vip { border-left: 4px solid #fef08a !important; background: #1e1b4b; } /* Background agak ungu gelap untuk VIP */
+        
+        .btn-done { background: #ef4444; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 0.8rem; }
+        .btn-done:hover { background: #dc2626; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h3>📋 OXA Smart Queue System</h3>
+        
+        <div class="input-group">
+            <input type="text" id="input-nama" placeholder="Masukkan Nama Pelanggan...">
+        </div>
+
+        <div id="action-group">
+            <button class="btn-add btn-reguler" data-tipe="reguler">+ Antrean Reguler</button>
+            <button class="btn-add btn-vip" data-tipe="vip">👑 + Antrean VIP</button>
+        </div>
+
+        <h4>Papan Antrean Saat Ini:</h4>
+        <div id="papan-antrean">
+            <div class="antrean-item">
+                <span>1. Budi (Reguler)</span>
+                <button class="btn-done">Selesai</button>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
