@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -47,6 +47,82 @@
         <div class="result-box">
             <h4>Patungan Per Orang:</h4>
             <span id="total-per-orang">Rp 0</span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OXA COFFEE - Table Order Manager</title>
+    <style>
+        body { font-family: sans-serif; padding: 30px; background-color: #0f172a; color: white; }
+        .container { max-width: 700px; margin: 0 auto; }
+        h2 { color: #38bdf8; text-align: center; }
+        
+        /* Area Input Kasir */
+        .input-box { background: #1e293b; padding: 20px; border-radius: 12px; margin-bottom: 25px; }
+        input { width: 100%; padding: 10px; background: #0f172a; border: 1px solid #334155; border-radius: 6px; color: white; box-sizing: border-box; font-size: 1rem; margin-bottom: 15px; }
+        
+        #grup-tombol-meja { display: flex; gap: 10px; }
+        .btn-meja { flex: 1; padding: 10px; border: none; background-color: #38bdf8; color: #0f172a; font-weight: bold; border-radius: 6px; cursor: pointer; }
+        .btn-meja:hover { background-color: #0ea5e9; }
+
+        /* Area Layout Meja Restoran */
+        .grid-meja { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .kartu-meja { background: #1e293b; padding: 20px; border-radius: 12px; border: 2px solid #334155; }
+        .header-meja { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #334155; padding-bottom: 10px; margin-bottom: 10px; }
+        .header-meja h3 { margin: 0; color: #fef08a; }
+        .badge-total { background: #334155; padding: 4px 8px; border-radius: 20px; font-size: 0.85rem; font-weight: bold; }
+        
+        ul { padding-left: 20px; margin: 10px 0 20px 0; min-height: 50px; color: #94a3b8; }
+        .btn-reset { width: 100%; background: #ef4444; color: white; border: none; padding: 8px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; }
+        .btn-reset:hover { background: #dc2626; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>🍽️ OXA Live Table Order Manager</h2>
+        
+        <div class="input-box">
+            <input type="text" id="input-pesanan" placeholder="Ketik nama menu... (Contoh: Avocado Coffee)">
+            <label style="display:block; margin-bottom: 8px; color: #94a3b8; font-size: 0.9rem;">Kirim Pesanan ke Meja:</label>
+            
+            <div id="grup-tombol-meja">
+                <button class="btn-meja" data-target-meja="meja-1">Meja 1</button>
+                <button class="btn-meja" data-target-meja="meja-2">Meja 2</button>
+            </div>
+        </div>
+
+        <div class="grid-meja">
+            
+            <div class="kartu-meja" id="meja-1">
+                <div class="header-meja">
+                    <h3>Meja 01</h3>
+                    <span class="badge-total">0 Item</span>
+                </div>
+                <ul class="list-pesanan"></ul>
+                <button class="btn-reset">Kosongkan Meja</button>
+            </div>
+
+            <div class="kartu-meja" id="meja-2">
+                <div class="header-meja">
+                    <h3>Meja 02</h3>
+                    <span class="badge-total">0 Item</span>
+                </div>
+                <ul class="list-pesanan"></ul>
+                <button class="btn-reset">Kosongkan Meja</button>
+            </div>
+
         </div>
     </div>
 
