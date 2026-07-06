@@ -7,3 +7,11 @@ const dataMahasiswa = [
 
 const mahasiswaFiltered = dataMahasiswa.filter((item)=>item.kelas == "MI-4B");
 console.log(mahasiswaFiltered)
+
+
+function angkaPositif(arr){
+    const hasil = arr.filter((item)=>item > 0);
+    return hasil;
+}
+
+console.log(angkaPositif([-5, 3, 0, -2, 8]))
