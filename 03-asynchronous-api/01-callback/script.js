@@ -1,21 +1,34 @@
-const btnSeduh = document.getElementById('btn-seduh')
-const layarTimer = document.getElementById('layar-timer')
-let variabel = 0;
+let token = ~~[Math.random() * 12345678];
+let picture = ['01.jpg'];
 
-btnSeduh.addEventListener("click", ()=>{
-    btnSeduh.disabled = true;
-    btnSeduh.style.cursor = 'not-allowed';
-    let timerSeduh = setInterval(()=>{
-        variabel++;
-        layarTimer.textContent = variabel;
-        if(variabel == 5){
-            clearInterval(timerSeduh);
-            alert("Kopi telah siap");
+function login(username, callback){
+    console.log("Validasi Data.....")
+    setTimeout(()=>{
+        callback({token, username});
+    },200)
+}
 
-                btnSeduh.disabled = false;
-                btnSeduh.style.cursor = "pointer";
-                variabel = 0;
-            }
-            layarTimer.textContent = variabel;
-    }, 1000)
-})
+function getUser(token, callback){
+    console.log("Validasi API Key....")
+    if(token) setTimeout(()=>{
+        callback({apiKey: "xKey123"});
+    },500);
+}
+
+function getPicture(apiKey, callback){
+    console.log("Menghasilkan Gambar...")
+    if(apiKey) setTimeout(()=>{
+        callback({pic: picture});
+    }, 1500)
+}
+
+const user = login("Johannes", function(response){
+    const {token} = response;
+    getUser(token, function(response){
+        const {apiKey} = response;
+        getPicture(apiKey, function(response){
+            const {pic} = response;
+            console.log("Picture: ", pic);
+        })
+    })
+});
