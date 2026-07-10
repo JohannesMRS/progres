@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX send</title>
+</head>
+<body>
+    <form action="">
+        <label for="username">
+            Username :
+            <input type="text" id="username" name="username">
+        </label>
+        <br>
+        <label for="password">
+            Password:
+            <input type="password" id="password" name="password">
+        </label>
+        <br>
+        <button type="button" id="login" value="Login">login</button>
+    </form>
+    <h1 id = "header"></h1>
+
+    <script>
+        function loginUser(){
+            const ajax = new XMLHttpRequest();
+            ajax.open("POST", "https://hookbin.rest/hooks/7dbe5a86f9");
+            ajax.onload = function(){
+                const response = document.getElementById("header");
+                response.innerText = ajax.responseText;
+            }
+
+            ajax.setRequestHeader("Content-Type", "application/json");
+            const json = {
+                username: document.getElementById("username").value,
+                password: document.getElementById("password").value,
+
+            }
+            ajax.send(JSON.stringify(json));
+        }
+
+        document.getElementById("login").onclick = loginUser;
+    </script>
+</body>
+</html>
