@@ -147,22 +147,62 @@ filterFormatProduk(daftarProduk, (hasil)=>{
 })
 
 
-function  kirimOTP(nomorHp, callback){
-    if(!nomorHp.includes(+62)){
-        callback("Nomor tidak mengandung +62", null)
-    }else{
-        callback(null, 5681)
-    }
+// function  kirimOTP(nomorHp, callback){
+//     if(!nomorHp.includes(+62)){
+//         callback("Nomor tidak mengandung +62", null)
+//     }else{
+//         callback(null, 5681)
+//     }
 
+// }
+
+// kirimOTP("+62812", (err, otp)=>{
+//     setTimeout(()=>{
+//         if(err){
+//             console.log(err)
+//         }else{
+//             console.log(`Kode OTP Kamu: ${otp}. Waspada \npenipuan! Jangan berikan kode \nini  kepada siapapun, termasuk \npihak Pegadaian`);
+//         }
+//     }, 1500)
+// })
+
+
+// function cekSaldo(userId, callback){
+//     console.log("Mengambil Data User....")
+//     setTimeout(()=>{
+//         callback(50000);
+//     }, 1000);
+// }
+
+// function potonganSaldo(saldoAwal, totalHarga, callback){
+//     console.log("Mendapatkan Data Harga....")
+//     setTimeout(()=>{
+//         if(saldoAwal >= totalHarga){
+//             let hasil = saldoAwal - totalHarga;
+//             callback(hasil)
+//         }else{
+//             callback("Saldo Tidak Mencukupi")
+//         }
+//     }, 1000)
+// }
+
+
+// cekSaldo(12, (saldoAwal)=>{
+//     potonganSaldo(saldoAwal, 35000, (response)=>{
+//         console.log(`Pembayaran Berhasil \nSisa Saldo: ${response}`)
+//     })
+// })
+
+
+function generateLaporan(jenis, callback){
+    if(typeof callback === "function"){
+        callback(jenis)
+    }else{
+        callback("Error: Missing Callback Function Argument")
+    }
 }
 
-kirimOTP("+62812", (err, otp)=>{
-    setTimeout(()=>{
-        if(err){
-            console.log(err)
-        }else{
-            console.log(`Kode OTP Kamu: ${otp}. Waspada \npenipuan! Jangan berikan kode \nini  kepada siapapun, termasuk \npihak Pegadaian`);
-        }
-    }, 1500)
+generateLaporan("Keuangan", (file)=>{
+    console.log(`File ${file} siap dikirim ke email`)
 })
-
+generateLaporan("Penjualan")
