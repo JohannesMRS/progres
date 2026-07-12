@@ -147,59 +147,62 @@ filterFormatProduk(daftarProduk, (hasil)=>{
 })
 
 
-// function  kirimOTP(nomorHp, callback){
-//     if(!nomorHp.includes(+62)){
-//         callback("Nomor tidak mengandung +62", null)
-//     }else{
-//         callback(null, 5681)
-//     }
+function  kirimOTP(nomorHp, callback){
+    setTimeout(()=>{
+        if(!nomorHp.includes(+62)){
+            callback("Nomor tidak mengandung +62", null)
+        }else{
+            callback(null, 5681)
+        }
+    }, 1000)
 
-// }
+}
 
-// kirimOTP("+62812", (err, otp)=>{
-//     setTimeout(()=>{
-//         if(err){
-//             console.log(err)
-//         }else{
-//             console.log(`Kode OTP Kamu: ${otp}. Waspada \npenipuan! Jangan berikan kode \nini  kepada siapapun, termasuk \npihak Pegadaian`);
-//         }
-//     }, 1500)
-// })
-
-
-// function cekSaldo(userId, callback){
-//     console.log("Mengambil Data User....")
-//     setTimeout(()=>{
-//         callback(50000);
-//     }, 1000);
-// }
-
-// function potonganSaldo(saldoAwal, totalHarga, callback){
-//     console.log("Mendapatkan Data Harga....")
-//     setTimeout(()=>{
-//         if(saldoAwal >= totalHarga){
-//             let hasil = saldoAwal - totalHarga;
-//             callback(hasil)
-//         }else{
-//             callback("Saldo Tidak Mencukupi")
-//         }
-//     }, 1000)
-// }
+kirimOTP("+62812", (err, otp)=>{
+    if(err){
+        console.log(err)
+    }else{
+        console.log(`Kode OTP Kamu: ${otp}. Waspada \npenipuan! Jangan berikan kode \nini  kepada siapapun, termasuk \npihak Pegadaian`);
+    }
+})
 
 
-// cekSaldo(12, (saldoAwal)=>{
-//     potonganSaldo(saldoAwal, 35000, (response)=>{
-//         console.log(`Pembayaran Berhasil \nSisa Saldo: ${response}`)
-//     })
-// })
+function cekSaldo(userId, callback){
+    console.log("Mengambil Data User....")
+    setTimeout(()=>{
+        callback(50000);
+    }, 1000);
+}
+
+function potonganSaldo(saldoAwal, totalHarga, callback){
+    console.log("Mendapatkan Data Harga....")
+    setTimeout(()=>{
+        if(saldoAwal >= totalHarga){
+            let hasil = saldoAwal - totalHarga;
+            callback(null, hasil)
+        }else{
+            callback("Saldo Tidak Mencukupi", null);
+        }
+    }, 1000)
+}
+
+
+cekSaldo(12, (err, saldoAwal)=>{
+    potonganSaldo(saldoAwal, 35000, (response)=>{
+        console.log(`Pembayaran Berhasil \nSisa Saldo: ${response}`)
+    })
+})
 
 
 function generateLaporan(jenis, callback){
-    if(typeof callback === "function"){
-        callback(jenis)
-    }else{
-        callback("Error: Missing Callback Function Argument")
-    }
+    const namaFile = `Laporan_${jenis}.pdf`;
+    setTimeout(()=>{
+        if(typeof callback === "function"){
+            callback(namaFile);
+        }else{
+            console.log(`[Warning] Callback tidak terdeteksi untuk file ${namaFile}`);
+        }
+    }, 2000);
 }
 
 generateLaporan("Keuangan", (file)=>{
