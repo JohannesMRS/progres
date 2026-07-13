@@ -53,7 +53,7 @@ validasiApiKey("RAHASIA123").then((result)=>{
     console.log(`Status: ${result}`);
 }).catch((err)=>{
     console.log(`Status: ${err}`);
-})
+});
 
 function cekStok(barang){
     return new Promise((resolve, reject)=>{
