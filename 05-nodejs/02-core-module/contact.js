@@ -1,0 +1,45 @@
+const fs = require('node:fs');
+const readline = require('node:readline');
+
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+});
+
+const dirPath = './data';
+
+if(!fs.existsSync(dirPath)){
+    fs.mkdirSync(dirPath);
+}
+
+const filePath = './data/contact.json';
+
+if(!fs.existsSync(filePath)){
+    fs.writeFileSync(filePath, '[]', 'utf-8');
+}
+
+
+const pertanyaan = (pertanyaan)=>{
+    return new Promise((resolve, reject)=>{
+        rl.question(pertanyaan, (nama)=>{
+            resolve(nama);
+        })
+    });
+};
+
+const simpanData = (nama, noHp)=>{
+    const contactInfo = {nama, noHp};
+    const readContact = fs.readFileSync(filePath, 'utf-8');
+    const json = JSON.parse(readContact);
+    json.push(contactInfo);
+    const jsonString = JSON.stringify(json);
+    fs.writeFileSync(filePath, jsonString);
+    console.log('Data Berhasil Di Input');
+    rl.close();
+}
+
+
+module.exports = {
+    pertanyaan,
+    simpanData,
+}
