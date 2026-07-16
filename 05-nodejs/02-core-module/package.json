@@ -1,0 +1,10 @@
+{
+  "name": "02-core-module",
+  "version": "1.0.0",
+  "type": "commonjs",
+  "main": "app.js",
+  "dependencies": {
+    "validator": "^13.15.35",
+    "yargs": "^18.0.0"
+  }
+}

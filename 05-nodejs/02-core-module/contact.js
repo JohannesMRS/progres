@@ -1,10 +1,11 @@
 const fs = require('node:fs');
-const readline = require('node:readline');
+const validator = require('validator');
+// const readline = require('node:readline');
 
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-});
+// const rl = readline.createInterface({
+//     input: process.stdin,
+//     output: process.stdout,
+// });
 
 const dirPath = './data';
 
@@ -19,27 +20,46 @@ if(!fs.existsSync(filePath)){
 }
 
 
-const pertanyaan = (pertanyaan)=>{
-    return new Promise((resolve, reject)=>{
-        rl.question(pertanyaan, (nama)=>{
-            resolve(nama);
-        })
-    });
-};
+// const pertanyaan = (pertanyaan)=>{
+//     return new Promise((resolve, reject)=>{
+//         rl.question(pertanyaan, (nama)=>{
+//             resolve(nama);
+//         })
+//     });
+// };
 
-const simpanData = (nama, noHp)=>{
-    const contactInfo = {nama, noHp};
+const simpanData = (nama, email, noHp)=>{
+    const contactInfo = {nama, email, noHp};
     const readContact = fs.readFileSync(filePath, 'utf-8');
     const json = JSON.parse(readContact);
+
+    const duplikat = json.find((contact)=>contact.nama === nama);
+    if(duplikat){
+        console.log('Kontak Sudah Digunakan!');
+        return
+    }
+
+    if(email){
+        if(!validator.isEmail(email)){
+            console.log('Email Tidak Valid');
+            return;
+        }
+    }
+
+    if(noHp){
+        if(!validator.isMobilePhone(noHp, 'id-ID')){
+            console.log('Nomor HP Tidak Valid, awali dengan 08');
+            return;
+        }
+    }
+
     json.push(contactInfo);
     const jsonString = JSON.stringify(json);
     fs.writeFileSync(filePath, jsonString);
     console.log('Data Berhasil Di Input');
-    rl.close();
 }
 
 
 module.exports = {
-    pertanyaan,
-    simpanData,
+    simpanData
 }

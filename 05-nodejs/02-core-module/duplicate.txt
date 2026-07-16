@@ -1,0 +1,13 @@
+// const {pertanyaan, simpanData} = require('./contact');
+
+// const result = async ()=>{
+//     try{
+//         const nama = await pertanyaan('Masukkan Nama: ');
+//         const noHp = await pertanyaan('Masukkan No HP: ');
+//         simpanData(nama, noHp);
+//     }catch(error){
+//         console.log(error);
+//     }
+    
+// }
+// result();
