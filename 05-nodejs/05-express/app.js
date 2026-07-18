@@ -13,11 +13,17 @@ app.set('view engine', 'ejs');
 
 app.get('/', (req, res)=>{
     // res.sendFile('./index.html', {root: __dirname});
-    res.render('index');
+    const mahasiswa = [
+            {nama: 'Johannes', email: 'johannes@gmail.com'},
+            {nama: 'Akmal Maulana', email: 'akmal@gmail.com'},
+            {nama: 'Junaedi Ahmad', email: 'junaedi@gmail.com'},
+        ]
+    res.render('index', {mahasiswa});
 })
 
 app.get('/about', (req, res)=>{
     // res.sendFile('./about.html', {root: __dirname});
+    
     res.render('about');
 })
 
