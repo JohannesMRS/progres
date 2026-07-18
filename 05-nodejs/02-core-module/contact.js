@@ -1,12 +1,6 @@
 const fs = require('node:fs');
 const { argv } = require('node:process');
 const validator = require('validator');
-// const readline = require('node:readline');
-
-// const rl = readline.createInterface({
-//     input: process.stdin,
-//     output: process.stdout,
-// });
 
 const dirPath = './data';
 
@@ -20,14 +14,6 @@ if(!fs.existsSync(filePath)){
     fs.writeFileSync(filePath, '[]', 'utf-8');
 }
 
-
-// const pertanyaan = (pertanyaan)=>{
-//     return new Promise((resolve, reject)=>{
-//         rl.question(pertanyaan, (nama)=>{
-//             resolve(nama);
-//         })
-//     });
-// };
 
 const simpanData = (nama, email, noHp)=>{
     const contactInfo = {nama, email, noHp};
@@ -93,6 +79,7 @@ const hapusData = (nama, email, noHp)=>{
         console.log('Email Tidak Ditemukan');
     }
 }
+
 
 
 module.exports = {
