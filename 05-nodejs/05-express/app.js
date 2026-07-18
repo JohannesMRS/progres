@@ -2,6 +2,7 @@ import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import ejs from 'ejs';
+import expressLayouts from 'express-ejs-layouts';
 
 const app = express();
 const port = 3000;
@@ -11,6 +12,8 @@ const __dirname = path.dirname(__filename);
 
 app.set('view engine', 'ejs');
 
+app.use(expressLayouts);
+
 app.get('/', (req, res)=>{
     // res.sendFile('./index.html', {root: __dirname});
     const mahasiswa = [
@@ -18,18 +21,29 @@ app.get('/', (req, res)=>{
             {nama: 'Akmal Maulana', email: 'akmal@gmail.com'},
             {nama: 'Junaedi Ahmad', email: 'junaedi@gmail.com'},
         ]
-    res.render('index', {mahasiswa});
+    res.render('index', {
+        layout: 'layouts/main-layouts',
+        nama: 'Johannes',
+        title: 'Halaman Utama',
+        mahasiswa,
+    });
 })
 
 app.get('/about', (req, res)=>{
     // res.sendFile('./about.html', {root: __dirname});
     
-    res.render('about');
+    res.render('about', {
+        layout: 'layouts/main-layouts',
+        title: 'Halaman About'
+    });
 })
 
 app.get('/contact', (req, res)=>{
     // res.sendFile('./contact.html', {root: __dirname});
-    res.render('contact');
+    res.render('contact', {
+        layout: 'layouts/main-layouts',
+        title: 'Halaman Kontak'
+    });
 })
 
 app.get('/product/:id', (req, res)=>{
