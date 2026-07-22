@@ -3,34 +3,22 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import ejs from 'ejs';
 import expressLayouts from 'express-ejs-layouts';
-import morgan from 'morgan';
-// import morgan from 'morgan';
+import { loadContact } from './utils/contacts.js';
+import { findContact } from './utils/contacts.js';
+
 
 const app = express();
-// const morgan = morgan();
+app.set('view engine', 'ejs');
 const port = 3000;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 
-app.set('view engine', 'ejs');
 
 app.use(expressLayouts);
 
-
-// third party middleware
-app.use(morgan('dev'));
-
 // built in middleware
 app.use(express.static('public'));
-
-
-// application-level middleware (middleware buatan sendiri)
-app.use((req, res, next)=>{
-    console.log('Time: ', Date.now());
-    next();
-})
-
 
 app.get('/', (req, res)=>{
     // res.sendFile('./index.html', {root: __dirname});
@@ -59,14 +47,22 @@ app.get('/about', (req, res)=>{
 
 app.get('/contact', (req, res)=>{
     // res.sendFile('./contact.html', {root: __dirname});
+    const contacts = loadContact();
     res.render('contact', {
         layout: 'layouts/main-layouts',
-        title: 'Halaman Kontak'
+        title: 'Halaman Kontak',
+        contacts
     });
 })
 
-app.get('/product/:id', (req, res)=>{
-    res.send(`Id Produk: ${req.params.id} <br> Id Kategori: ${req.query.category}`);
+app.get('/contact/:id', (req, res)=>{
+    // res.sendFile('./contact.html', {root: __dirname});
+    const contact = findContact(req.params.id);
+    res.render('detail', {
+        layout: 'layouts/main-layouts',
+        title: 'Halaman Detail Kontak',
+        contact
+    });
 })
 
 app.use('/', (req, res)=>{

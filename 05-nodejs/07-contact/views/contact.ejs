@@ -1,3 +1,43 @@
-
-    <h1>Ini Adalah Halaman Kontak</h1>
-
+<div class="container mt-3">
+    <div class="row">
+        <div class="col">
+            <h2>Daftar Kontak</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Nama</th>
+                    <th scope="col">Kontak</th>
+                    <th scope="col">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (contacts.length < 1) { %>
+                     <tr>
+                        <td colspan="4" style="text-align: center;">
+                            <div class="alert alert-dark" role="alert">
+                                Data Kontak Kosong!
+                            </div>
+                        </td>
+                     </tr>
+                    <% }else{ %>
+                        <% let no = 1; %>
+                        <% contacts.forEach(item => { %>
+                            <tr>
+                                <th scope="row"><%= no++ %></th>
+                                <td><%= item.nama %></td>
+                                <td><%= item.nohp %></td>
+                                <td>
+                                    <a href="/contact/<%= item.id %>" class = "btn btn-success badge rounded-pill">
+                                        Detail
+                                        <i class="bi bi-info-circle"></i> 
+                                    </a>
+                                </td>
+                            </tr>
+                        <% }) %>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
