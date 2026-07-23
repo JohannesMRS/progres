@@ -55,6 +55,19 @@ app.get('/contact', (req, res)=>{
     });
 })
 
+// contact post
+app.post('/contact', (req, res)=>{
+    console.log(req.body);
+    res.send('Data Berhasil Dibaca')
+})
+
+app.get('/contact/add', (req, res)=>{
+    res.render('add', {
+        layout: 'layouts/main-layouts',
+        title: 'Tambah Data'
+    })
+})
+
 app.get('/contact/:id', (req, res)=>{
     // res.sendFile('./contact.html', {root: __dirname});
     const contact = findContact(req.params.id);
@@ -64,6 +77,8 @@ app.get('/contact/:id', (req, res)=>{
         contact
     });
 })
+
+
 
 app.use('/', (req, res)=>{
     res.status(404);
